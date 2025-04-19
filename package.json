@@ -6,6 +6,9 @@
     "stylelint-plugin"
   ],
   "main": "lib/index.js",
+  "files": [
+    "lib/"
+  ],
   "author": "Irina Sokolovskaja <sokolovskaja.irina@gmail.com>",
   "homepage": "https://github.com/ierhyna/stylelint-no-indistinguishable-colors",
   "bugs": {
@@ -17,22 +20,29 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "eslint lib/**/*.js __tests__/**/*.js",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "prettier": "prettier --config prettier.config.mjs --check lib/*.js test/*.js eslint.config.mjs prettier.config.mjs",
+    "prettier-fix": "prettier --config prettier.config.mjs --write lib/*.js test/*.js eslint.config.mjs prettier.config.mjs",
+    "eslint": "eslint . --config eslint.config.mjs",
+    "eslint-fix": "eslint . --config eslint.config.mjs --fix",
+    "test": "node --test test/index.js"
   },
   "dependencies": {
-    "colorguard-processor": "2.0.36"
+    "postcss": "^8.5.3",
+    "postcss-colorguard": "^2.0.29"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.107",
-    "@swc/jest": "^0.2.31",
-    "eslint": "^8.56.0",
-    "eslint-plugin-import": "^2.29.1",
-    "jest": "^29.7.0",
-    "stylelint": "^15.11.0"
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-promise": "^7.2.1",
+    "prettier": "^3.5.3",
+    "stylelint-test-rule-node": "^0.4.0",
+    "stylelint": "^16.18.0"
   },
   "peerDependencies": {
-    "stylelint": "^11.1.1 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0"
-  }
+    "stylelint": "^16.18.0"
+  },
+  "type": "module"
 }
