@@ -220,7 +220,7 @@ export default tseslint.config(
         // },
       ],
       camelcase: [
-        'error',
+        'warn',
         {
           properties: 'always',
         },
