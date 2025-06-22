@@ -6,7 +6,7 @@
 
 ## Installation
 
-```
+```shell
 npm install --save-dev stylelint stylelint-no-indistinguishable-colors
 ```
 
@@ -14,7 +14,7 @@ npm install --save-dev stylelint stylelint-no-indistinguishable-colors
 
 Update your Stylelint config with following rules:
 
-```
+```json
 {
   "plugins": [
     "stylelint-no-indistinguishable-colors"
