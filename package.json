@@ -31,8 +31,8 @@
     "postcss-colorguard": "^2.0.29"
   },
   "devDependencies": {
-    "@eslint/js": "^9.30.1",
-    "eslint": "^9.30.1",
+    "@eslint/js": "^9.31.0",
+    "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.5.1",
@@ -43,7 +43,7 @@
     "stylelint": "^16.21.1",
     "stylelint-test-rule-node": "^0.4.0",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.1"
+    "typescript-eslint": "^8.36.0"
   },
   "peerDependencies": {
     "stylelint": "^16.21.1"
