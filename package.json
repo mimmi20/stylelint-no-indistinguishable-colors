@@ -43,7 +43,7 @@
     "stylelint": "^16.23.1",
     "stylelint-test-rule-node": "^0.4.0",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.0"
+    "typescript-eslint": "^8.39.1"
   },
   "peerDependencies": {
     "stylelint": "^16.23.1"
