@@ -6,9 +6,6 @@ version: 2
 
 multi-ecosystem-groups:
   maintenance-master:
-
-    directory: "/"
-
     schedule:
       interval: "weekly"
       day: "sunday"
@@ -39,11 +36,15 @@ multi-ecosystem-groups:
 updates:
   - package-ecosystem: "npm"
 
+    directory: "/"
+
     multi-ecosystem-group: "maintenance-master"
 
     patterns: [ "*" ]
 
   - package-ecosystem: "github-actions"
+
+    directory: "/"
 
     ignore:
       - dependency-name: "mimmi20/ci"
