@@ -5,7 +5,7 @@
 version: 2
 
 multi-ecosystem-groups:
-  maintenance:
+  maintenance-master:
     schedule:
       interval: "weekly"
       day: "sunday"
@@ -31,18 +31,14 @@ multi-ecosystem-groups:
     labels:
       - "dependencies"
 
+    target-branch: "master"
+
 updates:
   - package-ecosystem: "npm"
 
     directory: "/"
 
-    target-branch: "master"
-
-    commit-message:
-      include: "scope"
-      prefix: "npm"
-
-    multi-ecosystem-group: "maintenance"
+    multi-ecosystem-group: "maintenance-master"
 
     patterns: [ "*" ]
 
@@ -50,15 +46,10 @@ updates:
 
     directory: "/"
 
-    target-branch: "master"
-
-    commit-message:
-      prefix: "github-actions"
-
     ignore:
       - dependency-name: "mimmi20/ci"
       - dependency-name: "release-drafter/release-drafter"
 
-    multi-ecosystem-group: "maintenance"
+    multi-ecosystem-group: "maintenance-master"
 
     patterns: [ "*" ]
