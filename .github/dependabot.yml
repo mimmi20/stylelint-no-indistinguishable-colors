@@ -4,16 +4,16 @@
 
 version: 2
 
-updates:
-  - package-ecosystem: "npm"
-
-    directory: "/"
-
+multi-ecosystem-groups:
+  maintenance:
     schedule:
       interval: "weekly"
       day: "sunday"
       time: "04:00"
       timezone: "Europe/Berlin"
+
+    cooldown:
+      default-days: 7
 
     groups:
       production-dependencies:
@@ -21,13 +21,16 @@ updates:
       development-dependencies:
         dependency-type: "development"
 
-    open-pull-requests-limit: 10
-
     assignees:
       - "mimmi20"
 
     labels:
       - "dependencies"
+
+updates:
+  - package-ecosystem: "npm"
+
+    directory: "/"
 
     versioning-strategy: "increase"
 
@@ -39,29 +42,13 @@ updates:
 
     rebase-strategy: "disabled"
 
+    multi-ecosystem-group: "maintenance"
+
+    patterns: [ "*" ]
+
   - package-ecosystem: "github-actions"
 
     directory: "/"
-
-    schedule:
-      interval: "weekly"
-      day: "sunday"
-      time: "04:00"
-      timezone: "Europe/Berlin"
-
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
-
-    open-pull-requests-limit: 10
-
-    assignees:
-      - "mimmi20"
-
-    labels:
-      - "dependencies"
 
     target-branch: "master"
 
@@ -73,3 +60,7 @@ updates:
       - dependency-name: "release-drafter/release-drafter"
 
     rebase-strategy: "disabled"
+
+    multi-ecosystem-group: "maintenance"
+
+    patterns: [ "*" ]
