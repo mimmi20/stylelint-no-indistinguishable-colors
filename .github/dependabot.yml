@@ -21,6 +21,10 @@ multi-ecosystem-groups:
       development-dependencies:
         dependency-type: "development"
 
+    versioning-strategy: "increase"
+
+    rebase-strategy: "disabled"
+
     assignees:
       - "mimmi20"
 
@@ -32,15 +36,11 @@ updates:
 
     directory: "/"
 
-    versioning-strategy: "increase"
-
     target-branch: "master"
 
     commit-message:
       include: "scope"
       prefix: "npm"
-
-    rebase-strategy: "disabled"
 
     multi-ecosystem-group: "maintenance"
 
@@ -58,8 +58,6 @@ updates:
     ignore:
       - dependency-name: "mimmi20/ci"
       - dependency-name: "release-drafter/release-drafter"
-
-    rebase-strategy: "disabled"
 
     multi-ecosystem-group: "maintenance"
 
