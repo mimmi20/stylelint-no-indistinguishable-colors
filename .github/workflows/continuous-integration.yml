@@ -50,6 +50,7 @@ jobs:
       skip-npm-install: false
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: true
       skip-libgif-install: true
 
@@ -80,6 +81,7 @@ jobs:
       skip-prettier: false
       skip-nasm-install: false
       skip-libimagequant-install: false
+      skip-libpng-install: true
       skip-librabbitmq-install: true
       skip-libgif-install: true
       skip-oxlint: true
