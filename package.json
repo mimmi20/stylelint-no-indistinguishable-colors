@@ -35,18 +35,18 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-promise": "^7.2.1",
-    "globals": "^17.0.0",
-    "prettier": "^3.7.4",
+    "globals": "^17.3.0",
+    "prettier": "^3.8.1",
     "prettier-eslint": "^16.4.2",
-    "stylelint": "^16.26.1",
-    "stylelint-test-rule-node": "^0.4.0",
+    "stylelint": "^17.2.0",
+    "stylelint-test-rule-node": "^1.0.0",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.52.0"
+    "typescript-eslint": "^8.55.0"
   },
   "peerDependencies": {
-    "stylelint": "^16.26.1"
+    "stylelint": "^17.2.0"
   },
   "type": "module",
   "overrides": {
