@@ -40,13 +40,13 @@
     "globals": "^17.4.0",
     "prettier": "^3.8.1",
     "prettier-eslint": "^16.4.2",
-    "stylelint": "^17.4.0",
+    "stylelint": "^17.6.0",
     "stylelint-test-rule-node": "^1.1.0",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.57.0"
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.0"
   },
   "peerDependencies": {
-    "stylelint": "^17.4.0"
+    "stylelint": "^17.6.0"
   },
   "type": "module",
   "overrides": {
