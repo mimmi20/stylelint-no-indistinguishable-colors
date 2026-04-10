@@ -20,36 +20,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
+  validate-all:
     name: "Validate Project"
 
-    uses: "mimmi20/ci/.github/workflows/validate.yml@8.4"
+    uses: "mimmi20/ci/.github/workflows/validate-all.yml@master"
     with:
-      extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-      skip-validate-composer: true
       skip-validate-yaml: false
       skip-validate-md: false
-      skip-phplint: true
-      skip-check-composer: true
-      skip-ec-checker: true
-      dependency-analyser-options: ""
 
   install:
     name: "Install Project"
 
-    needs: "validate"
+    needs:
+      - "validate-all"
 
-    uses: "mimmi20/ci/.github/workflows/install.yml@8.4"
+    uses: "mimmi20/ci/.github/workflows/install-node.yml@master"
     with:
-      extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-      skip-php-install: true
-      skip-npm-install: false
-      skip-nasm-install: false
-      skip-libimagequant-install: false
+      skip-nasm-install: true
+      skip-libimagequant-install: true
       skip-libpng-install: true
       skip-librabbitmq-install: true
       skip-libgif-install: true
@@ -67,44 +55,34 @@ jobs:
 
     needs: "install"
 
-    uses: "mimmi20/ci/.github/workflows/analytics.yml@8.4"
+    uses: "mimmi20/ci/.github/workflows/analytics-node.yml@master"
     with:
-      extensions: "ctype, curl, dom, fileinfo, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-      skip-php-cs-fixer: true
-      skip-phpcs: true
-      skip-phpstan: true
-      skip-rector: true
       skip-eslint: false
       skip-stylelint: true
       skip-prettier: false
-      skip-nasm-install: false
-      skip-libimagequant-install: false
+      skip-nasm-install: true
+      skip-libimagequant-install: true
       skip-libpng-install: true
       skip-librabbitmq-install: true
       skip-libgif-install: true
       skip-oxlint: true
-      use-code-scanning: false
-      phpcs-options: ""
 
 #  tests:
 #    name: "UnitTests"
 #
 #    needs: "analytics"
 #
-#    uses: "mimmi20/ci/.github/workflows/test.yml@8.4"
+#    uses: "mimmi20/ci/.github/workflows/test-node.yml@master"
 #    with:
-#      extensions: "ctype, dom, fileinfo, intl, simplexml, tokenizer, xml, xmlwriter"
-#      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
 #      coverage: "xdebug"
-#      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
 #      test-name: ""
-#      min-msi: 0
-#      min-covered-msi: 0
-#      skip-phpunit: true
 #      skip-vitest: false
 #      skip-stryker: true
+#      skip-nasm-install: true
+#      skip-libimagequant-install: true
+#      skip-libpng-install: true
+#      skip-librabbitmq-install: true
+#      skip-libgif-install: true
 #      upload-codecov: true
 #      upload-codeclimate: true
 #      upload-coveralls: true
@@ -161,22 +139,20 @@ jobs:
   # This is a meta job to avoid to have to constantly change the protection rules
   # whenever we touch the matrix.
   tests-status:
-    name: "Unit & Integration Tests Status"
+    name: "CI Status"
 
     runs-on: "ubuntu-latest"
 
     if: always()
 
     needs:
-#      - "tests"
-#      - "build-with-vite"
       - "analytics"
 
     steps:
-      - name: Successful run
-        if: ${{ !(contains(needs.*.result, 'failure')) }}
-        run: exit 0
-
       - name: Failing run
-        if: ${{ contains(needs.*.result, 'failure') }}
+        if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') || contains(needs.*.result, 'cancelled') }}
         run: exit 1
+
+      - name: Successful run
+        if: ${{ !(contains(needs.*.result, 'failure')) && !(contains(needs.*.result, 'skipped')) && !(contains(needs.*.result, 'cancelled')) }}
+        run: exit 0
