@@ -27,7 +27,7 @@
     "test": "node --test test/index.js"
   },
   "dependencies": {
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.15",
     "postcss-colorguard": "^2.0.29"
   },
   "devDependencies": {
