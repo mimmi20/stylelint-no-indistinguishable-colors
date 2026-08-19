@@ -39,12 +39,12 @@
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-promise": "^7.3.0",
-    "globals": "^17.7.0",
+    "globals": "^17.10.0",
     "prettier": "^3.9.5",
     "stylelint": "^17.14.0",
     "stylelint-test-rule-node": "^1.2.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.64.0"
+    "typescript-eslint": "^8.67.0"
   },
   "peerDependencies": {
     "stylelint": "^17.14.0"
